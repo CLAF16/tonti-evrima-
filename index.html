@@ -2190,6 +2190,7 @@ $('frb').onclick=open;$('frx').onclick=close;$('fro').addEventListener('click',f
 function lift(){var h=0;try{var e=document.elementFromPoint(innerWidth/2,innerHeight-3);while(e&&e!==document.body){var cs=getComputedStyle(e);if((cs.position==='fixed'||cs.position==='sticky')&&!e.classList.contains('fr-b')&&!e.closest('.fr-o')){h=e.getBoundingClientRect().height;break}e=e.parentElement}}catch(x){}document.documentElement.style.setProperty('--fr-lift',(h>0&&h<140?h+10:0)+'px')}
 addEventListener('resize',lift);setInterval(lift,1500);setTimeout(lift,300);
 })();</script><!--/fr-->
+
 <!--in--><style id="in-css">
 .in-b{position:fixed;left:max(14px,env(safe-area-inset-left,0px));right:max(14px,env(safe-area-inset-right,0px));bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + var(--fr-lift,0px) + 58px);z-index:8990;display:none;align-items:center;gap:10px;flex-wrap:wrap;max-width:520px;margin:0 auto;padding:12px 14px;border-radius:14px;background:rgba(15,27,22,.96);border:1px solid rgba(240,167,58,.5);color:#e8efe9;font:13.5px/1.4 system-ui,'Segoe UI',sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.45);text-transform:none;letter-spacing:0}
 .in-b.on{display:flex}body.introlock .in-b{display:none!important}
@@ -2208,9 +2209,9 @@ function $(i){return document.getElementById(i)}
 function seen(){try{return localStorage.getItem('tontis-install-x')}catch(e){return null}}
 var st=(matchMedia('(display-mode: standalone)').matches||navigator.standalone===true);if(st)return;
 var ua=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(ua),win=/Windows/.test(ua)&&!/Mobile/.test(ua),pe=null,onApp=location.hostname==='claf16.github.io'||location.protocol==='file:'||location.hostname==='localhost';
-addEventListener('beforeinstallprompt',function(e){e.preventDefault();pe=e;setTimeout(show,2500)});
+var kur=/[?&]kur=1/.test(location.search);addEventListener('beforeinstallprompt',function(e){e.preventDefault();pe=e;setTimeout(function(){try{localStorage.removeItem('tontis-install-x')}catch(x){}show()},kur?300:2500)});
 addEventListener('appinstalled',function(){$('inb').classList.remove('on')});
-function show(){if(seen())return;var d=L[lang()],b=$('inb');$('int').textContent=d.t;$('ind').textContent=d.d;var y=$('iny'),w=$('inw');w.style.display='none';y.style.display='';
+function show(){if(seen()&&!kur)return;var d=L[lang()],b=$('inb');$('int').textContent=d.t;$('ind').textContent=d.d;var y=$('iny'),w=$('inw');w.style.display='none';y.style.display='';
 if(pe){y.textContent=d.y;y.onclick=function(){b.classList.remove('on');pe.prompt();pe=null}}
 else if(ios){y.style.display='none';$('ind').textContent=d.ios}
 else if(!onApp){y.textContent=d.open;y.onclick=function(){window.open(APP,'_blank')}}
