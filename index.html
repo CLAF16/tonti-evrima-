@@ -534,7 +534,7 @@ body.menu-open #sc{display:block;position:fixed;inset:0;z-index:65;background:rg
 .mp-side{max-height:none!important;overflow:visible}.mp-ls{max-height:340px}.mp-map{position:sticky;top:0}
 }
 </style>
-</head><body><div class="w">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"><script>try{document.documentElement.setAttribute("data-theme",localStorage.getItem("tontis-theme")||"light")}catch(e){document.documentElement.setAttribute("data-theme","light")}</script></head><body><div class="w">
 <header class="hero"><svg class="rings" viewBox="0 0 360 220" aria-hidden="true" fill="none" stroke="var(--ac)" stroke-width="1.2"><ellipse cx="250" cy="100" rx="30" ry="18"/><ellipse cx="250" cy="100" rx="60" ry="36"/><ellipse cx="250" cy="100" rx="92" ry="56"/><ellipse cx="250" cy="100" rx="126" ry="77"/><ellipse cx="250" cy="100" rx="162" ry="99"/><ellipse cx="250" cy="100" rx="200" ry="122"/></svg><div class="eyebrow">Hayatta kalma rehberi · Evrima</div><h1>Tontiş <span>The Isle Evrima</span></h1><p class="sub">Hangi hayvana hangi mutasyon? Detay, karşılaştırma, build planı ve mutasyon kataloğu tek yerde.</p><div class="kpis"><div><b>22</b>hayvan</div><div><b>41</b>mutasyon</div><div><b>4</b>slot</div></div><div class="live off" id="live" title="Steam canlı oyuncu sayısı"><i></i><span>The Isle çevrimiçi: <b id="liveN">—</b></span></div></header>
 <div class="bar" id="bar"></div><div id="v"></div>
 <div class="n">Puanlar (0–10) oyunun verisi değil, hayvanın rol ihtiyaçlarına göre hesaplanan sezgisel bir modeldir; hayvan başına en iyi seçenek 10 olur. Mutasyon listesi, hayvan istatistikleri ve slot kısıtları Bloxodes wiki’den alındı (Kasım 2026). Sunucu ayarları değerleri değiştirebilir.</div>
@@ -610,7 +610,7 @@ Gallimimus:{soc:[3,'Mobilize + büyük grup'],mul:[2,'Yüksek hızlı seyahat']}
 Dryosaurus:{hyp:[3,'Kaçış için farkındalık'],mul:[2,'Kaçarken stamina']},
 Hypsilophodon:{fea:[3,'Küçük ve gizli'],hyp:[2,'Duyma']},Herrerasaurus:{fea:[2,'İz bırakmaz'],enl:[3,'Tırmanış/atlama düşüşleri']},
 Pachycephalosaurus:{tac:[2,'Darbe stamina olur']}};
-const S={tab:'dino',d:9,m:0,fem:false,locked:true};
+const S={tab:'home',d:9,m:0,fem:false,locked:true};
 const $=s=>document.querySelector(s);
 const elig=(m,d)=>!((m[3]==='c'&&d[1]!=='C')||(m[3]==='h'&&d[1]==='C')||(m[3]==='f'&&!S.fem)||(m[0]==='can'&&['Deinosuchus','Ceratosaurus'].includes(d[0]))||(m[2]==='K'&&!S.locked));
 function dot(m,d){let s=0;for(let k=0;k<8;k++)s+=+m[6][k]*+d[7][k];s+=+m[6][8]*(S.fem?1.5:0);const b=(BN[d[0]]||{})[m[0]];return s+(b?b[0]:0)}
@@ -763,7 +763,7 @@ function render(){const T=[['dino','Hayvana göre'],['cmp','Karşılaştır'],['
  (['dino','cmp','plan'].includes(S.tab)?ds('d'):'')+(S.tab==='cmp'?ds('d2'):'')+
  (S.tab==='mut'?`<select onchange="S.m=+this.value;render()">${M.map((m,i)=>`<option value="${i}"${i===S.m?' selected':''}>${m[1]}</option>`).join('')}</select>`:'')+
  `<label><input type="checkbox" ${S.fem?'checked':''} onchange="S.fem=this.checked;render()">Dişi</label><label><input type="checkbox" ${S.locked?'checked':''} onchange="S.locked=this.checked;render()">Kilitli</label>`+(DP?`<button class="on" onclick="DP.prompt();DP=null;render()">⬇ Uygulamayı yükle</button>`:'');
- $('#v').innerHTML={dino:viewDino,cmp:viewCmp,plan:viewPlan,mut:viewMut,cat:viewCat,heat:viewHeat,gal:()=>window.viewGal(),grw:()=>window.viewGrow(),pwr:()=>'<div id="pwx"></div>',map:()=>'<div id="mpx"></div>',tip:()=>'<div id="tpx"></div>'}[S.tab]()}
+ $('#v').innerHTML={dino:viewDino,cmp:viewCmp,plan:viewPlan,mut:viewMut,cat:viewCat,heat:viewHeat,gal:()=>window.viewGal(),grw:()=>window.viewGrow(),pwr:()=>'<div id="pwx"></div>',map:()=>'<div id="mpx"></div>',home:()=>(window.viewHome?window.viewHome():'<div id="hpx"></div>'),tip:()=>'<div id="tpx"></div>'}[S.tab]()}
 
 render();
 </script><script>
@@ -1527,14 +1527,14 @@ input.q,.ppk input{transition:.2s}input.q:focus,.ppk input:focus{border-color:va
 `;
 var root=window.__AR||document.head;
 root.insertAdjacentHTML('beforeend','<style id="pro-css">'+CSS+'</style>');
-var I={tip:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.9.7 1.5 1.6 1.5 2.6h4c0-1 .6-1.9 1.5-2.6A6 6 0 0 0 12 3z"/>',map:'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/>',pwr:'<path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/>',gal:'<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>',dino:'<circle cx="6.5" cy="10" r="1.8"/><circle cx="11" cy="6.5" r="1.8"/><circle cx="16" cy="6.8" r="1.8"/><circle cx="19.5" cy="11" r="1.6"/><path d="M12.5 12c-3 0-5.5 3-5.5 5.2 0 1.7 1.6 2.2 3.2 1.7 1.4-.4 2.4-.4 3.8 0 1.6.5 3.2 0 3.2-1.7 0-2.2-2.7-5.2-4.7-5.2z"/>',
+var I={home:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',tip:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.9.7 1.5 1.6 1.5 2.6h4c0-1 .6-1.9 1.5-2.6A6 6 0 0 0 12 3z"/>',map:'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/>',pwr:'<path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/>',gal:'<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>',dino:'<circle cx="6.5" cy="10" r="1.8"/><circle cx="11" cy="6.5" r="1.8"/><circle cx="16" cy="6.8" r="1.8"/><circle cx="19.5" cy="11" r="1.6"/><path d="M12.5 12c-3 0-5.5 3-5.5 5.2 0 1.7 1.6 2.2 3.2 1.7 1.4-.4 2.4-.4 3.8 0 1.6.5 3.2 0 3.2-1.7 0-2.2-2.7-5.2-4.7-5.2z"/>',
 cmp:'<path d="M7 4v16M17 4v16M4 8l3-4 3 4M14 16l3 4 3-4"/>',
 plan:'<path d="M3 20h4v-4h4v-4h4V8h4V4"/><path d="M3 20h18" opacity=".4"/>',
 mut:'<path d="M7 3c0 5 10 5 10 9s-10 4-10 9M17 3c0 5-10 5-10 9s10 4 10 9M9 6.2h6M8.4 12h7.2M9 17.8h6"/>',
 cat:'<rect x="4" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6"/>',
 grw:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 3h6"/>',heat:'<path d="M5 20v-6M10 20V8M15 20v-9M20 20V5"/>'};
-var T=[['tip','Püf noktaları','Püf noktaları','Her hayvanın saldırı, savunma ve hareket ipuçları; sersemletme, devirme ve dikkat edilecek hatalar.'],['map','Harita','Evrima haritası','Bölge adları, sular, çamur çukurları, sığınaklar ve yapılar. Sürükle, yakınlaştır, ara, mesafe ölç.'],['gal','Galeri','Tür galerisi','Tüm türleri canlı animasyonlarla gez, filtrele, tıkla ve rehbere geç.'],['dino','Hayvana göre','Hayvan detayı','Rol, istatistik, mutasyon önerileri ve hayatta kalma rehberi.'],['cmp','Karşılaştır','Karşılaştırma','İki hayvanı istatistik ve mutasyon uyumu açısından yan yana koy.'],['plan','Build planlayıcı','Build planlayıcı','4 slotluk mutasyon build’ini kur, puanla, kaydet ve paylaş.'],['mut','Mutasyona göre','Mutasyona göre','Bir mutasyonun hangi hayvanlarda en iyi çalıştığını gör.'],['cat','Katalog','Mutasyon kataloğu','Tüm mutasyonlar: etki, kategori, slot ve kilit koşulları.'],['pwr','Evre güçleri','Evre evre güç','Yavru, genç, yarı yetişkin ve Elder: her evrede ağırlık, hız ve ısırığa göre boyut sınıfı ve güç sıralaması.'],['grw','Büyüme süresi','Büyüme süresi','Tüm türlerin yumurtadan çıkıştan Elder’a süresi: 1x, 2x, 3x ve 5x sunucu çarpanında.'],['heat','Isı haritası','Isı haritası','Tüm hayvan × mutasyon uyum puanları tek tabloda.']];
-var G=[['Rehber',['map','gal','dino','cmp','plan','tip']],['Veri',['pwr','mut','cat','heat','grw']]];
+var T=[['home','Ana sayfa','Ana sayfa','Başlangıç noktası.'],['tip','Püf noktaları','Püf noktaları','Her hayvanın saldırı, savunma ve hareket ipuçları; sersemletme, devirme ve dikkat edilecek hatalar.'],['map','Harita','Evrima haritası','Bölge adları, sular, çamur çukurları, sığınaklar ve yapılar. Sürükle, yakınlaştır, ara, mesafe ölç.'],['gal','Galeri','Tür galerisi','Tüm türleri canlı animasyonlarla gez, filtrele, tıkla ve rehbere geç.'],['dino','Hayvana göre','Hayvan detayı','Rol, istatistik, mutasyon önerileri ve hayatta kalma rehberi.'],['cmp','Karşılaştır','Karşılaştırma','İki hayvanı istatistik ve mutasyon uyumu açısından yan yana koy.'],['plan','Build planlayıcı','Build planlayıcı','4 slotluk mutasyon build’ini kur, puanla, kaydet ve paylaş.'],['mut','Mutasyona göre','Mutasyona göre','Bir mutasyonun hangi hayvanlarda en iyi çalıştığını gör.'],['cat','Katalog','Mutasyon kataloğu','Tüm mutasyonlar: etki, kategori, slot ve kilit koşulları.'],['pwr','Evre güçleri','Evre evre güç','Yavru, genç, yarı yetişkin ve Elder: her evrede ağırlık, hız ve ısırığa göre boyut sınıfı ve güç sıralaması.'],['grw','Büyüme süresi','Büyüme süresi','Tüm türlerin yumurtadan çıkıştan Elder’a süresi: 1x, 2x, 3x ve 5x sunucu çarpanında.'],['heat','Isı haritası','Isı haritası','Tüm hayvan × mutasyon uyum puanları tek tabloda.']];
+var G=[['Başlangıç',['home']],['Rehber',['map','gal','dino','cmp','plan','tip']],['Veri',['pwr','mut','cat','heat','grw']]];
 function svg(k){return '<svg viewBox="0 0 24 24" aria-hidden="true">'+I[k]+'</svg>'}
 function cnt(k){return k==='dino'||k==='gal'?D.length:(k==='mut'||k==='cat')?M.length:k==='plan'?S.pl.filter(function(v){return v!==null}).length+'/4':''}
 function ds(k,l){return '<label class="pr-f"><span>'+l+'</span><select onchange="S.'+k+'=+this.value;S.msg=\'\';render()">'+D.map(function(d,i){return '<option value="'+i+'"'+(i===S[k]?' selected':'')+'>'+d[0]+'</option>'}).join('')+'</select></label>'}
@@ -1710,14 +1710,14 @@ new MutationObserver(function(){if(!document.getElementById('intro')){ms.forEach
 <script id="pwr-js">(function(){var _p=render;render=function(){_p.apply(this,arguments);if(S.tab==='pwr')try{pwMount($('#pwx'),function(k){var i=D.findIndex(function(d){return d[0].toLowerCase()===k});if(i>-1){S.d=i;S.tab='dino';S.msg='';render();scrollTo(0,0)}})}catch(e){console.error('pwr',e)}}})();</script><script id="map-hook">(function(){var _p=render;render=function(){_p.apply(this,arguments);if(S.tab==='map')try{mapMount($('#mpx'))}catch(e){console.error('map',e)}}})();</script><script id="tip-hook">(function(){var _p=render;render=function(){_p.apply(this,arguments);if(S.tab==='tip')try{tipMount($('#tpx'))}catch(e){console.error('tip',e)}}})();</script><script id="sh-js">
 (function(){if(window.__SH)return;var w=document.querySelector('.w'),bar=document.getElementById('bar'),v=document.getElementById('v');if(!w||!bar||!v)return;window.__SH=1;
 function sv(p){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>'}
-var IC={menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/>',moon:'<path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',map:'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/>',gal:'<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>',dino:'<circle cx="6.5" cy="10" r="1.8"/><circle cx="11" cy="6.5" r="1.8"/><circle cx="16" cy="6.8" r="1.8"/><circle cx="19.5" cy="11" r="1.6"/><path d="M12.5 12c-3 0-5.5 3-5.5 5.2 0 1.7 1.6 2.2 3.2 1.7 1.4-.4 2.4-.4 3.8 0 1.6.5 3.2 0 3.2-1.7 0-2.2-2.7-5.2-4.7-5.2z"/>',plan:'<path d="M3 20h4v-4h4v-4h4V8h4V4"/><path d="M3 20h18" opacity=".4"/>'};
-var PG=[['map','Harita'],['gal','Galeri'],['dino','Hayvana göre'],['cmp','Karşılaştır'],['plan','Build planlayıcı'],['tip','Püf noktaları'],['pwr','Evre güçleri'],['mut','Mutasyona göre'],['cat','Katalog'],['heat','Isı haritası'],['grw','Büyüme süresi']];
+var IC={home:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/>',moon:'<path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',map:'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/>',gal:'<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>',dino:'<circle cx="6.5" cy="10" r="1.8"/><circle cx="11" cy="6.5" r="1.8"/><circle cx="16" cy="6.8" r="1.8"/><circle cx="19.5" cy="11" r="1.6"/><path d="M12.5 12c-3 0-5.5 3-5.5 5.2 0 1.7 1.6 2.2 3.2 1.7 1.4-.4 2.4-.4 3.8 0 1.6.5 3.2 0 3.2-1.7 0-2.2-2.7-5.2-4.7-5.2z"/>',plan:'<path d="M3 20h4v-4h4v-4h4V8h4V4"/><path d="M3 20h18" opacity=".4"/>'};
+var PG=[['home','Ana sayfa'],['map','Harita'],['gal','Galeri'],['dino','Hayvana göre'],['cmp','Karşılaştır'],['plan','Build planlayıcı'],['tip','Püf noktaları'],['pwr','Evre güçleri'],['mut','Mutasyona göre'],['cat','Katalog'],['heat','Isı haritası'],['grw','Büyüme süresi']];
 var tb=document.createElement('div');tb.id='tb';
 tb.innerHTML='<button class="sh-ib sh-mb" id="shM" type="button" aria-label="Menü">'+sv(IC.menu)+'</button><span class="sh-br"><span class="pr-logo" style="width:34px;height:34px;border-radius:11px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M4 18c3 0 4-4 7-4s3 3 6 3 3-5 3-9"/><path d="M15 5l5 3-3 4"/></svg></span><b>Tontiş</b></span><div class="sh-sr"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/></svg><input id="shQ" type="search" placeholder="Hayvan, mutasyon ya da sayfa ara…" autocomplete="off" spellcheck="false" aria-label="Ara"><kbd>/</kbd><div class="sh-res" id="shR" role="listbox"></div></div><span class="sh-sp"></span><span id="shLive"></span><button class="sh-ib" id="shT" type="button" aria-label="Tema"></button><button class="sh-ib" id="shI" type="button" aria-label="Bilgi">'+sv(IC.info)+'</button><div class="sh-info" id="shInfo"></div>';
 w.insertBefore(tb,v);
 var live=document.getElementById('live');if(live)document.getElementById('shLive').appendChild(live);
 var n=w.querySelector('.n');document.getElementById('shInfo').innerHTML='<b>Hakkında</b>Fan yapımı, ücretsiz ve resmî değildir. '+(n?n.textContent:'');
-var bt=document.createElement('div');bt.id='bt';bt.innerHTML=[['map','Harita'],['gal','Galeri'],['dino','Hayvan'],['plan','Build']].map(function(x){return '<button type="button" data-t="'+x[0]+'">'+sv(IC[x[0]])+x[1]+'</button>'}).join('')+'<button type="button" data-m="1">'+sv(IC.menu)+'Menü</button>';
+var bt=document.createElement('div');bt.id='bt';bt.innerHTML=[['home','Ana sayfa'],['map','Harita'],['gal','Galeri'],['dino','Hayvan']].map(function(x){return '<button type="button" data-t="'+x[0]+'">'+sv(IC[x[0]])+x[1]+'</button>'}).join('')+'<button type="button" data-m="1">'+sv(IC.menu)+'Menü</button>';
 var sc=document.createElement('div');sc.id='sc';document.body.appendChild(sc);document.body.appendChild(bt);
 function go(t){S.tab=t;render()}
 bt.onclick=function(e){var b=e.target.closest('button');if(!b)return;if(b.dataset.m){document.body.classList.toggle('menu-open')}else{document.body.classList.remove('menu-open');go(b.dataset.t)}};
@@ -1726,7 +1726,7 @@ document.getElementById('shM').onclick=function(){document.body.classList.toggle
 // tema
 function dark(){var t=document.documentElement.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme:dark)').matches}
 function th(){document.getElementById('shT').innerHTML=sv(dark()?IC.sun:IC.moon);document.getElementById('shT').title=dark()?'Açık tema':'Koyu tema'}
-try{var sv0=localStorage.getItem('tontis-theme');if(sv0)document.documentElement.setAttribute('data-theme',sv0)}catch(e){}
+try{var sv0=localStorage.getItem('tontis-theme');document.documentElement.setAttribute('data-theme',sv0||'light')}catch(e){}
 document.getElementById('shT').onclick=function(){var nt=dark()?'light':'dark';document.documentElement.setAttribute('data-theme',nt);try{localStorage.setItem('tontis-theme',nt)}catch(e){}th()};th();
 // bilgi
 var inf=document.getElementById('shInfo');document.getElementById('shI').onclick=function(e){e.stopPropagation();inf.classList.toggle('open')};
@@ -1753,4 +1753,121 @@ var _r=render;render=function(){_r.apply(this,arguments);try{after()}catch(e){co
 try{after()}catch(e){console.error('shell',e)}
 })();
 </script>
-</body></html>
+<style id="ds-css">
+/* ===== Tontiş uygulama teması: "Saha defteri" ===== */
+:root,:root[data-theme="light"]{--bg:#f4f1ea;--card:#fff;--card2:#eeebe3;--fg:#191c2e;--mu:#62667b;--bd:#e2ded2;--ac:#e0522a;--acf:#fff;--glow:rgba(224,82,42,.16);--pos:#1c9a66;--neg:#d4324a;--fd:"Fraunces",Georgia,serif;--fb:"Plus Jakarta Sans",system-ui,sans-serif;--sh:0 1px 2px rgba(25,28,46,.05),0 10px 30px -14px rgba(25,28,46,.18);color-scheme:light}
+:root[data-theme="dark"]{--bg:#0e1120;--card:#171b2f;--card2:#1f2440;--fg:#eceef8;--mu:#9ba1c0;--bd:#2a3050;--ac:#ff7b55;--acf:#2b0f05;--glow:rgba(255,123,85,.18);--pos:#5fd8a2;--neg:#ff7d8f;--sh:0 1px 2px rgba(0,0,0,.3),0 14px 34px -16px rgba(0,0,0,.6);color-scheme:dark}
+html body{background:var(--bg);font-family:var(--fb);color:var(--fg)}
+body::before,body::after{display:none!important}
+h1,h2,h3,.pr-th h2{font-family:var(--fd)!important;font-weight:700;letter-spacing:-.01em}
+/* kabuk */
+.w #bar{--fg:#eceef8;--mu:#a4abcc;--bd:rgba(255,255,255,.1);--card2:rgba(255,255,255,.07);--card:rgba(255,255,255,.05);background:linear-gradient(180deg,#1a1e47 0%,#10132e 100%)!important;border-right:0!important;color:var(--fg);box-shadow:8px 0 40px -20px rgba(10,12,40,.5)}
+.w #bar .pr-brand{border-bottom:1px solid rgba(255,255,255,.1)}
+.w #bar .pr-logo{background:linear-gradient(140deg,#ff8a5c,#e0522a);color:#fff;box-shadow:0 10px 22px -8px #e0522a}
+.w #bar .pr-brand b{font-family:var(--fd);font-size:20px;color:#fff;font-weight:700}
+.w #bar .pr-brand small{color:#a4abcc;font-family:var(--fb);letter-spacing:.16em}
+.w #bar .pr-gl{font-family:var(--fb);color:#7f87b0;letter-spacing:.16em;opacity:1}
+.w #bar .pr-nav button.tab{font-family:var(--fb);color:#c9cde6;border-radius:14px;padding:9px 10px}
+.w #bar .pr-nav button.tab svg{width:30px;height:30px;padding:6px;border-radius:10px;background:rgba(255,255,255,.07);stroke-width:1.9;color:#aab1d6}
+.w #bar .pr-nav button.tab:hover{background:rgba(255,255,255,.07);color:#fff;transform:none}
+.w #bar .pr-nav button.tab.on{background:#e0522a;border-color:transparent;color:#fff;box-shadow:0 12px 26px -12px #e0522a}
+.w #bar .pr-nav button.tab.on::after{display:none}
+.w #bar .pr-nav button.tab.on svg{background:rgba(255,255,255,.22);color:#fff;filter:none}
+.w #bar .pr-nav button.tab span.pr-n{background:rgba(255,255,255,.12);color:#d9dcf0;font-family:var(--fb)}
+.w #bar .pr-nav button.tab.on span.pr-n{background:rgba(255,255,255,.25);color:#fff}
+.w #bar .pr-fl{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);border-radius:16px}
+.w #bar select{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.14)}
+.w #bar select option{color:#111;background:#fff}
+.w #bar .pr-foot{color:#7f87b0}
+.w #bar .pr-inst{background:#e0522a;color:#fff}
+.w{background:transparent}
+
+.sh-sr{background:var(--card)!important;border:1px solid var(--bd)!important;border-radius:16px!important;box-shadow:var(--sh)}
+.sh-ib{background:var(--card)!important;border-radius:14px!important;box-shadow:var(--sh)}
+/* içerik başlığı */
+.pr-th{background:var(--card)!important;border:1px solid var(--bd)!important;border-radius:22px!important;box-shadow:var(--sh);overflow:hidden}
+.pr-th::before,.pr-th::after{display:none!important}
+.pr-ti{background:linear-gradient(140deg,#ff8a5c,#e0522a)!important;color:#fff!important;border-radius:16px!important;box-shadow:0 10px 22px -10px #e0522a!important}
+.pr-th h2{font-size:26px!important}
+/* kartlar */
+.gx-kp,.gx-seg,.gx-card,.gx-sp,.pr-fl{border-radius:20px}
+.gx-kp{background:var(--card)!important;box-shadow:var(--sh)}
+.gx-card,.mp-card,.tp-card,.pw-card{background:var(--card);border-radius:20px;box-shadow:var(--sh)}
+button.on,.gx-go{font-family:var(--fb)}
+#v>div:not(.pr-th) [class*="card"]{box-shadow:var(--sh)}
+/* alt çubuk (telefon) */
+#bt{background:color-mix(in srgb,var(--card) 92%,transparent)!important;backdrop-filter:blur(14px);border-top:1px solid var(--bd)!important}
+#bt button.on,#bt button[aria-current]{color:var(--ac)!important}
+/* ana sayfa */
+body[data-tab="home"] .pr-th{display:none}
+.hp{display:grid;gap:22px}
+.hp-hero{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:8px;border-radius:30px;overflow:hidden;color:#fff;background:radial-gradient(120% 140% at 85% 20%,#3b3f9c 0%,#1d2158 45%,#11143a 100%);box-shadow:0 30px 60px -30px rgba(17,20,58,.7);min-height:340px}
+.hp-hero::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 78% 42%,transparent 0 26px,rgba(255,255,255,.045) 26px 27px);pointer-events:none}
+.hp-tx{position:relative;padding:36px 34px;display:flex;flex-direction:column;justify-content:center;gap:14px;z-index:1}
+.hp-kick{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font:700 11px var(--fb);letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.12);color:#ffd9c9}
+.hp-kick i{width:7px;height:7px;border-radius:50%;background:#ff8a5c;box-shadow:0 0 10px #ff8a5c}
+.hp-tx h1{margin:0;font:700 clamp(34px,5vw,54px)/1.02 var(--fd);letter-spacing:-.02em;color:#fff}
+.hp-tx p{margin:0;color:#c9cdee;font-size:15px;line-height:1.55;max-width:46ch}
+.hp-st{display:flex;flex-wrap:wrap;gap:8px}
+.hp-st span{padding:8px 13px;border-radius:12px;background:rgba(255,255,255,.1);font:600 12px var(--fb);color:#e8eafb}
+.hp-st b{font:800 15px var(--fb);color:#fff;margin-right:4px}
+.hp-bt{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.hp-bt button{cursor:pointer;border:0;border-radius:14px;padding:13px 20px;font:700 14px var(--fb);transition:.2s}
+.hp-bt .p{background:#e0522a;color:#fff;box-shadow:0 14px 26px -12px #e0522a}.hp-bt .p:hover{transform:translateY(-2px)}
+.hp-bt .s{background:rgba(255,255,255,.12);color:#fff}.hp-bt .s:hover{background:rgba(255,255,255,.2)}
+.hp-cv{position:relative;z-index:1;min-height:260px}
+.hp-cv canvas{position:absolute;inset:0;width:100%;height:100%}
+.hp-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:6px 2px -8px}
+.hp-h h2{margin:0;font:700 24px var(--fd)}
+.hp-h span{color:var(--mu);font-size:13px}
+.hp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.hp-t{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:22px;background:var(--card);border:1px solid var(--bd);box-shadow:var(--sh);transition:.22s}
+.hp-t:hover{transform:translateY(-3px);border-color:var(--c)}
+.hp-t:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.hp-t i{flex:none;width:46px;height:46px;border-radius:15px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 15%,transparent);color:var(--c)}
+.hp-t i svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.hp-t b{display:block;font:700 16px var(--fb);color:var(--fg);margin-bottom:3px}
+.hp-t small{display:block;font:500 13px/1.45 var(--fb);color:var(--mu)}
+.hp-2{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}
+.hp-box{background:var(--card);border:1px solid var(--bd);border-radius:22px;box-shadow:var(--sh);padding:22px}
+.hp-box h3{margin:0 0 12px;font:700 19px var(--fd)}
+.hp-up{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.hp-up li{display:flex;gap:12px;font-size:14px;line-height:1.5;color:var(--fg)}
+.hp-up li::before{content:"";flex:none;width:9px;height:9px;margin-top:6px;border-radius:50%;background:var(--ac)}
+.hp-up em{font-style:normal;color:var(--mu)}
+.hp-rnd{display:flex;flex-wrap:wrap;gap:8px}
+.hp-rnd button{all:unset;cursor:pointer;padding:8px 13px;border-radius:99px;background:var(--card2);font:600 13px var(--fb);color:var(--fg);transition:.2s}
+.hp-rnd button:hover{background:var(--ac);color:var(--acf)}
+@media(max-width:900px){.hp-hero{grid-template-columns:1fr}.hp-cv{min-height:210px;order:-1}.hp-tx{padding:24px 22px 28px}.hp-2{grid-template-columns:1fr}}
+.hp-cv canvas{inset:22px 18px 8px!important;width:calc(100% - 36px)!important;height:calc(100% - 30px)!important}
+</style><script id="ds-js">
+(function(){
+var C={C:'#ff6b5b',H:'#4bd08b',O:'#ffc247'},SN={C:'Etçil',H:'Otçul',O:'Omnivor'};
+function ic(p){return '<svg viewBox="0 0 24 24" aria-hidden="true">'+p+'</svg>'}
+var TL=[
+['map','Harita','Bölgeler, sular, sığınaklar; oyun koordinatını gir, yerini gör.','#3b82f6','<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/>'],
+['gal','Galeri','Tüm türleri canlı animasyonla gez.','#a855f7','<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>'],
+['dino','Hayvan rehberi','Rol, istatistik, doğma bölgeleri ve mutasyon önerileri.','#e0522a','<circle cx="6.5" cy="10" r="1.8"/><circle cx="11" cy="6.5" r="1.8"/><circle cx="16" cy="6.8" r="1.8"/><circle cx="19.5" cy="11" r="1.6"/><path d="M12.5 12c-3 0-5.5 3-5.5 5.2 0 1.7 1.6 2.2 3.2 1.7 1.4-.4 2.4-.4 3.8 0 1.6.5 3.2 0 3.2-1.7 0-2.2-2.7-5.2-4.7-5.2z"/>'],
+['plan','Build planlayıcı','4 slotluk mutasyon build’ini kur ve paylaş.','#10b981','<path d="M3 20h4v-4h4v-4h4V8h4V4"/>'],
+['tip','Püf noktaları','Her hayvan için saldırı, savunma ve hata ipuçları.','#f59e0b','<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.9.7 1.5 1.6 1.5 2.6h4c0-1 .6-1.9 1.5-2.6A6 6 0 0 0 12 3z"/>'],
+['cmp','Karşılaştır','İki hayvanı yan yana koy.','#06b6d4','<path d="M7 4v16M7 4L4 7M7 4l3 3M17 20V4M17 20l-3-3M17 20l3-3"/>'],
+['pwr','Evre güçleri','Yavrudan Elder’a evre evre güç sıralaması.','#ef4444','<path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/>'],
+['heat','Isı haritası','Hayvan × mutasyon uyumu tek tabloda.','#ec4899','<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>']
+];
+function today(){var d=new Date(),s=Math.floor((d-new Date(d.getFullYear(),0,0))/864e5);return (s+d.getFullYear())%D.length}
+window.viewHome=function(){return '<div class="hp" id="hpx"></div>'};
+var cur=null;
+window.homeMount=function(root){
+ if(!root)return;
+ var i=(S.hd!=null&&S.hd>=0)?S.hd:today(),d=D[i],st=['Hız '+String(d[2]).replace('.',',')+' km/h',(d[3]>=1000?String(d[3]/1000).replace('.',',')+' t':d[3]+' kg'),String(d[4]).replace('.',',')+' m boy','Grup '+d[6]];
+ var rnd=D.map(function(x,k){return '<button data-i="'+k+'">'+x[0]+'</button>'}).join('');
+ root.innerHTML='<section class="hp-hero"><div class="hp-tx"><span class="hp-kick"><i></i>'+(S.hd!=null&&S.hd>=0?'Seçilen hayvan':'Günün hayvanı')+' · '+SN[d[1]]+'</span><h1>'+d[0]+'</h1><p>Hızı, ağırlığı, mutasyonları ve püf noktalarıyla The Isle: Evrima rehberin. Hayvan seç, build kur, haritada yolunu bul.</p><div class="hp-st">'+st.map(function(t){return '<span>'+t+'</span>'}).join('')+'</div><div class="hp-bt"><button class="p" data-go="dino">Rehbere git →</button><button class="s" data-go="tip">Püf noktaları</button></div></div><div class="hp-cv"><canvas></canvas></div></section>'+
+ '<div class="hp-h"><h2>Ne yapmak istersin?</h2><span>Tek dokunuşla başla</span></div><div class="hp-grid">'+TL.map(function(t){return '<button class="hp-t" style="--c:'+t[3]+'" data-go="'+t[0]+'"><i>'+ic(t[4])+'</i><span><b>'+t[1]+'</b><small>'+t[2]+'</small></span></button>'}).join('')+'</div>'+
+ '<div class="hp-2"><div class="hp-box"><h3>Son güncellemeler</h3><ul class="hp-up"><li><span><b>Konumum</b> <em>· oyun koordinatını haritada gör</em></span></li><li><span><b>Püf noktaları</b> <em>· 22 hayvanın tamamı</em></span></li><li><span><b>Doğma bölgeleri</b> <em>· hayvan sayfasında</em></span></li><li><span><b>Yeni tasarım</b> <em>· yenilenmiş arayüz, açık ve koyu tema</em></span></li></ul></div><div class="hp-box"><h3>Bir hayvan seç</h3><div class="hp-rnd">'+rnd+'</div></div></div>';
+ root.onclick=function(e){var g=e.target.closest('[data-go]');if(g){if(g.dataset.go==='dino'){S.d=i}S.tab=g.dataset.go;render();return}var b=e.target.closest('[data-i]');if(b){S.hd=+b.dataset.i;render()}};
+ try{if(cur)cur.stop();var cv=root.querySelector('canvas');if(window.PALEO){cur=PALEO.mount(cv,d[0].toLowerCase());cur.play()}}catch(x){}
+};
+var _p=render;render=function(){if(cur){try{cur.stop()}catch(e){}cur=null}_p.apply(this,arguments);document.body.setAttribute('data-tab',S.tab);if(S.tab==='home')try{homeMount(document.getElementById('hpx'))}catch(e){console.error('home',e)}};
+try{render()}catch(e){console.error(e)}
+})();
+</script></body></html>
