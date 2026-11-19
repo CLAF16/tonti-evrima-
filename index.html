@@ -2190,4 +2190,34 @@ $('frb').onclick=open;$('frx').onclick=close;$('fro').addEventListener('click',f
 function lift(){var h=0;try{var e=document.elementFromPoint(innerWidth/2,innerHeight-3);while(e&&e!==document.body){var cs=getComputedStyle(e);if((cs.position==='fixed'||cs.position==='sticky')&&!e.classList.contains('fr-b')&&!e.closest('.fr-o')){h=e.getBoundingClientRect().height;break}e=e.parentElement}}catch(x){}document.documentElement.style.setProperty('--fr-lift',(h>0&&h<140?h+10:0)+'px')}
 addEventListener('resize',lift);setInterval(lift,1500);setTimeout(lift,300);
 })();</script><!--/fr-->
+<!--in--><style id="in-css">
+.in-b{position:fixed;left:max(14px,env(safe-area-inset-left,0px));right:max(14px,env(safe-area-inset-right,0px));bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + var(--fr-lift,0px) + 58px);z-index:8990;display:none;align-items:center;gap:10px;flex-wrap:wrap;max-width:520px;margin:0 auto;padding:12px 14px;border-radius:14px;background:rgba(15,27,22,.96);border:1px solid rgba(240,167,58,.5);color:#e8efe9;font:13.5px/1.4 system-ui,'Segoe UI',sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.45);text-transform:none;letter-spacing:0}
+.in-b.on{display:flex}body.introlock .in-b{display:none!important}
+@media (min-width:701px){.in-b{left:max(14px,env(safe-area-inset-left,0px));right:auto;margin:0;bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + var(--fr-lift,0px) + 54px)}}
+.in-b b{display:block;color:#f6e7bf;font-size:14px}.in-t{flex:1;min-width:150px}
+.in-b button,.in-b a{border:0;border-radius:10px;padding:9px 14px;font:700 13px system-ui;cursor:pointer;text-decoration:none;text-transform:none;letter-spacing:0}
+.in-y{background:#f0a73a;color:#1a1305}.in-g{background:#14251e;color:#cdd8d2!important;border:1px solid #2a4034!important}
+.in-x{background:none!important;color:#93a89c;padding:6px 8px!important;font-size:18px!important;line-height:1}
+</style>
+<div class="in-b" id="inb" role="region"><div class="in-t"><b id="int"></b><span id="ind"></span></div><button type="button" class="in-y" id="iny"></button><a class="in-g" id="inw" target="_blank" rel="noopener"></a><button type="button" class="in-x" id="inx" aria-label="X">×</button></div>
+<script id="in-js">(function(){
+var EXE='https://claf16.github.io/tonti-evrima-/Tontis.exe',APP='https://claf16.github.io/tonti-evrima-/';
+var L={tr:{t:'Uygulamayı yükle',d:'Tek dokunuşla ana ekrana ya da masaüstüne ekle.',y:'Yükle',w:'Windows için indir (.exe)',ios:'iPhone: alttaki Paylaş düğmesine bas, sonra "Ana Ekrana Ekle" seç.',open:'Uygulamayı aç'},en:{t:'Install the app',d:'Add it to your home screen or desktop in one tap.',y:'Install',w:'Download for Windows (.exe)',ios:'iPhone: tap the Share button, then "Add to Home Screen".',open:'Open the app'},ru:{t:'Установить приложение',d:'Добавьте на главный экран или рабочий стол одним касанием.',y:'Установить',w:'Скачать для Windows (.exe)',ios:'iPhone: нажмите «Поделиться», затем «На экран Домой».',open:'Открыть приложение'}};
+function lang(){var l='tr';try{l=localStorage.getItem('tontis-app-lang')||localStorage.getItem('tontis-site-lang')||document.documentElement.lang||'tr'}catch(e){}l=String(l).slice(0,2).toLowerCase();return L[l]?l:'tr'}
+function $(i){return document.getElementById(i)}
+function seen(){try{return localStorage.getItem('tontis-install-x')}catch(e){return null}}
+var st=(matchMedia('(display-mode: standalone)').matches||navigator.standalone===true);if(st)return;
+var ua=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(ua),win=/Windows/.test(ua)&&!/Mobile/.test(ua),pe=null,onApp=location.hostname==='claf16.github.io'||location.protocol==='file:'||location.hostname==='localhost';
+addEventListener('beforeinstallprompt',function(e){e.preventDefault();pe=e;setTimeout(show,2500)});
+addEventListener('appinstalled',function(){$('inb').classList.remove('on')});
+function show(){if(seen())return;var d=L[lang()],b=$('inb');$('int').textContent=d.t;$('ind').textContent=d.d;var y=$('iny'),w=$('inw');w.style.display='none';y.style.display='';
+if(pe){y.textContent=d.y;y.onclick=function(){b.classList.remove('on');pe.prompt();pe=null}}
+else if(ios){y.style.display='none';$('ind').textContent=d.ios}
+else if(!onApp){y.textContent=d.open;y.onclick=function(){window.open(APP,'_blank')}}
+else if(win){y.style.display='none'}else return;
+if(win){w.textContent=d.w;w.href=EXE;w.style.display=''}
+b.classList.add('on')}
+$('inx').onclick=function(){$('inb').classList.remove('on');try{localStorage.setItem('tontis-install-x','1')}catch(e){}};
+if(ios||win||!onApp)setTimeout(function(){if(!seen()&&!$('inb').classList.contains('on'))show()},6000);
+})();</script><!--/in-->
 </body></html>
