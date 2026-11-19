@@ -1677,9 +1677,9 @@ body.introlock{overflow:hidden}
 #nx{position:fixed;inset:0;z-index:99999;background:#02060a;overflow:hidden;font-family:system-ui,'Segoe UI',Roboto,sans-serif;color:#fff;transition:opacity .9s ease,transform 1.1s cubic-bezier(.6,0,.2,1),filter .9s;--R:170px;--cy:300px;user-select:none;-webkit-user-select:none;cursor:pointer}
 #nx.out{opacity:0;transform:scale(2.1);filter:blur(10px) brightness(1.8);pointer-events:none}
 #nx>canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-#nx .nx-r{position:absolute;left:50%;top:var(--cy);width:min(100vw,1000px);aspect-ratio:3/2;margin:0;max-width:none;transform:translate(-50%,-50%);opacity:0;mix-blend-mode:screen;-webkit-mask-image:radial-gradient(ellipse 50% 52% at 50% 50%,#000 42%,transparent 74%);mask-image:radial-gradient(ellipse 50% 52% at 50% 50%,#000 42%,transparent 74%);animation:nxr 2.4s 1.25s cubic-bezier(.2,.8,.2,1) forwards,nxf 6s 3.7s ease-in-out infinite alternate;pointer-events:none}
-@keyframes nxr{0%{opacity:0;transform:translate(-54%,-44%) scale(.62);filter:blur(22px) brightness(2.6)}60%{opacity:1}100%{opacity:1;transform:translate(-54%,-47%) scale(1);filter:blur(0) brightness(1)}}
-@keyframes nxf{from{transform:translate(-54%,-47%) scale(1)}to{transform:translate(-54.8%,-48.4%) scale(1.06)}}
+#nx .nx-r{position:absolute;left:50%;top:var(--cy);width:calc(var(--R)*1.94);height:calc(var(--R)*1.94);max-width:none;margin:0;border-radius:50%;object-fit:cover;object-position:80% 50%;transform:translate(-50%,-50%);opacity:0;box-shadow:inset 0 0 40px 10px rgba(0,0,0,.55);animation:nxr 2.2s 1.25s cubic-bezier(.2,.8,.2,1) forwards,nxf 6s 3.5s ease-in-out infinite alternate;pointer-events:none}
+@keyframes nxr{0%{opacity:0;transform:translate(-50%,-50%) scale(.55);filter:blur(20px) brightness(2.6)}60%{opacity:1}100%{opacity:1;transform:translate(-50%,-50%) scale(1);filter:blur(0) brightness(1)}}
+@keyframes nxf{from{transform:translate(-50%,-50%) scale(1);object-position:80% 50%}to{transform:translate(-50%,-50%) scale(1.025);object-position:72% 50%}}
 #nx .nx-fl{position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,#fff 0,#ffe9b8 25%,transparent 65%);opacity:0;animation:nxfl 1.2s 1.25s ease-out;pointer-events:none}
 @keyframes nxfl{0%{opacity:.95}100%{opacity:0}}
 #nx .nx-t{position:absolute;left:0;right:0;top:calc(var(--cy) + var(--R) + 14px);text-align:center;padding:0 16px;pointer-events:none}
