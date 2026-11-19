@@ -2096,45 +2096,97 @@ try{if(S.tab==='dino'||S.tab==='home')render()}catch(e){}
 </script>
 
 
+
 <!--fr--><style id="fr-css">
 .fr-b{text-transform:none;letter-spacing:0;position:fixed;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + var(--fr-lift,0px));z-index:9000;display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:99px;border:1px solid rgba(240,167,58,.5);background:rgba(15,27,22,.92);color:#f6e7bf;font:600 13px system-ui,'Segoe UI',sans-serif;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.35);backdrop-filter:blur(8px)}
 .fr-b:hover{border-color:#f0a73a}.fr-b svg{width:16px;height:16px;fill:none;stroke:#f0a73a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 body.introlock .fr-b{display:none}
 .fr-o{position:fixed;inset:0;z-index:99990;display:none;align-items:center;justify-content:center;background:rgba(2,6,10,.72);backdrop-filter:blur(4px);padding:max(12px,env(safe-area-inset-top,0px)) 12px max(12px,env(safe-area-inset-bottom,0px))}
 .fr-o.on{display:flex}
-.fr-p{width:min(780px,100%);height:min(88vh,860px);display:flex;flex-direction:column;background:#0f1b16;color:#e8efe9;border:1px solid #1f3029;border-radius:16px;overflow:hidden;font:14px/1.5 system-ui,'Segoe UI',sans-serif;box-shadow:0 20px 60px rgba(0,0,0,.6)}
-.fr-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px 8px}
-.fr-h b{font:800 18px system-ui;letter-spacing:.02em;color:#f6e7bf}
-.fr-x{background:none;border:1px solid #2a4034;color:#cdd8d2;border-radius:99px;width:34px;height:34px;font-size:18px;cursor:pointer;line-height:1}
-.fr-c{display:flex;gap:8px;flex-wrap:wrap;padding:4px 16px 10px}
-.fr-c button{text-transform:none;letter-spacing:0;background:#14251e;color:#cdd8d2;border:1px solid #24392f;border-radius:99px;padding:7px 14px;font:600 13px system-ui;cursor:pointer}
+.fr-p,.fr-p *{box-sizing:border-box;text-transform:none;letter-spacing:0}
+.fr-p{width:min(760px,100%);height:min(88vh,860px);display:flex;flex-direction:column;background:#0f1b16;color:#e8efe9;border:1px solid #1f3029;border-radius:16px;overflow:hidden;font:14px/1.5 system-ui,'Segoe UI',sans-serif;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.fr-h{display:flex;align-items:center;gap:10px;padding:14px 16px 8px}
+.fr-h b{font:800 18px system-ui;color:#f6e7bf;flex:1}
+.fr-u{background:#14251e;color:#f6e7bf;border:1px solid #2a4034;border-radius:99px;padding:6px 12px;font:600 12.5px system-ui;cursor:pointer;max-width:42vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fr-x{background:none;border:1px solid #2a4034;color:#cdd8d2;border-radius:99px;width:34px;height:34px;font-size:18px;cursor:pointer;line-height:1;flex:none}
+.fr-c{display:flex;gap:8px;overflow-x:auto;padding:4px 16px 10px;scrollbar-width:none}.fr-c::-webkit-scrollbar{display:none}
+.fr-c button{flex:none;background:#14251e;color:#cdd8d2;border:1px solid #24392f;border-radius:99px;padding:7px 14px;font:600 13px system-ui;cursor:pointer}
 .fr-c button.on{background:#f0a73a;color:#1a1305;border-color:#f0a73a}
-.fr-n{padding:0 16px 10px;color:#93a89c;font-size:12.5px}
-.fr-m{flex:1;min-height:0;overflow:auto;padding:0 12px 12px;-webkit-overflow-scrolling:touch}
-.fr-m iframe{width:100%!important}
-.fr-s{padding:30px 18px;text-align:center;color:#93a89c}
+.fr-m{flex:1;min-height:0;overflow:auto;padding:4px 16px 16px;-webkit-overflow-scrolling:touch}
+.fr-s{padding:30px 10px;text-align:center;color:#93a89c}
+.fr-btn{background:#f0a73a;color:#1a1305;border:0;border-radius:10px;padding:10px 16px;font:700 14px system-ui;cursor:pointer}
+.fr-btn.g{background:#14251e;color:#cdd8d2;border:1px solid #2a4034}
+.fr-btn:disabled{opacity:.5;cursor:default}
+.fr-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.fr-t{display:block;width:100%;text-align:left;background:#12231c;border:1px solid #1f3029;border-radius:12px;padding:12px 14px;margin-bottom:8px;color:inherit;cursor:pointer;font:inherit}
+.fr-t:hover{border-color:#3a5a48}.fr-t b{display:block;color:#f6e7bf;font-size:15px;margin-bottom:2px}.fr-t span{color:#93a89c;font-size:12.5px}
+.fr-i{width:100%;background:#0b1511;color:#e8efe9;border:1px solid #2a4034;border-radius:10px;padding:10px 12px;font:15px system-ui;margin-bottom:10px;outline:0}
+.fr-i:focus{border-color:#f0a73a}textarea.fr-i{min-height:90px;resize:vertical}
+.fr-l{display:block;color:#93a89c;font-size:12.5px;margin:0 0 4px}
+.fr-e{color:#ff8a7a;font-size:13px;margin:0 0 10px;min-height:1px}
+.fr-ok{color:#7ee0a8;font-size:13px;margin:0 0 10px}
+.fr-pst{background:#12231c;border:1px solid #1f3029;border-radius:12px;padding:10px 14px;margin-bottom:8px}
+.fr-pst.op{border-color:#3a5a48}
+.fr-pst .w{display:flex;justify-content:space-between;gap:8px;color:#93a89c;font-size:12.5px;margin-bottom:4px}.fr-pst .w b{color:#7ee0a8}
+.fr-pst p{margin:0;white-space:pre-wrap;word-break:break-word}
+.fr-pst .a{margin-top:6px;display:flex;gap:12px}.fr-pst .a button{background:none;border:0;color:#93a89c;font-size:12px;cursor:pointer;padding:0;text-decoration:underline}
+.fr-tabs{display:flex;gap:6px;margin-bottom:14px}.fr-tabs button{flex:1}
 @media (max-width:700px){.fr-b{padding:12px;gap:0}.fr-b span{display:none}.fr-b svg{width:20px;height:20px}}
 @media (max-width:560px){.fr-p{height:100%;border-radius:0;width:100%}.fr-o{padding:0}}
 </style>
 <button type="button" class="fr-b" id="frb" aria-label="Forum"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.4A8 8 0 1 1 21 12z"/></svg><span id="frbt">Forum</span></button>
-<div class="fr-o" id="fro" role="dialog" aria-modal="true"><div class="fr-p"><div class="fr-h"><b id="frt">Forum</b><button type="button" class="fr-x" id="frx" aria-label="X">×</button></div><div class="fr-c" id="frc"></div><div class="fr-n" id="frn"></div><div class="fr-m" id="frm"></div></div></div>
+<div class="fr-o" id="fro" role="dialog" aria-modal="true"><div class="fr-p"><div class="fr-h"><b id="frt">Forum</b><button type="button" class="fr-u" id="fru"></button><button type="button" class="fr-x" id="frx" aria-label="X">×</button></div><div class="fr-c" id="frc"></div><div class="fr-m" id="frm"></div></div></div>
 <script id="fr-js">(function(){
-var CFG={repo:'CLAF16/tonti-evrima-',repoId:'R_kgDOVzl2_Q',category:'Forum',categoryId:'DIC_kwDOVzl2_c4DLfPw'};
-var L={tr:{t:'Tartışma',b:'Forum',n:'Saygılı ol, spam ve reklam yok. Yazmak için GitHub hesabıyla giriş yaparsın.',soon:'Forum çok yakında açılıyor.',off:'Forum için internet bağlantısı gerekir.',c:['Genel','Build ve mutasyon','Harita','Öneri ve hata'],lg:'tr'},
-en:{t:'Discussion',b:'Forum',n:'Be respectful, no spam or ads. You sign in with a GitHub account to post.',soon:'The forum is opening very soon.',off:'The forum needs an internet connection.',c:['General','Builds & mutations','Map','Ideas & bugs'],lg:'en'},
-ru:{t:'Обсуждение',b:'Форум',n:'Будьте вежливы, без спама и рекламы. Чтобы писать, войдите через аккаунт GitHub.',soon:'Форум скоро откроется.',off:'Для форума нужен интернет.',c:['Общее','Билды и мутации','Карта','Идеи и баги'],lg:'ru'}};
-var T=['forum-genel','forum-build','forum-harita','forum-oneri'],cur=0,loaded=false;
-function lang(){var l='tr';try{l=localStorage.getItem('tontis-app-lang')||localStorage.getItem('tontis-site-lang')||document.documentElement.lang||'tr'}catch(e){}l=String(l).slice(0,2).toLowerCase();return L[l]?l:'tr'}
+var CFG=window.__FRCFG||{fb:{apiKey:'',authDomain:'',projectId:'',appId:''},admins:[]};
+var L={tr:{b:'Forum',t:'Tartışma',soon:'Forum çok yakında açılıyor.',off:'Forum için internet bağlantısı gerekir.',c:['Genel','Build ve mutasyon','Harita','Öneri ve hata'],login:'Giriş yap',reg:'Hesap aç',out:'Çıkış',email:'E-posta',nick:'Kullanıcı adı',pass:'Şifre',pass2:'Şifre (en az 6 karakter)',forgot:'Şifremi unuttum',sent:'Şifre sıfırlama bağlantısı e-postana gönderildi.',needmail:'Önce e-posta adresini yaz.',nw:'Yeni konu',empty:'Henüz konu yok. İlk konuyu sen aç.',back:'‹ Geri',reply:'Yanıt yaz',send:'Gönder',tt:'Konu başlığı',tb:'Mesajın',post:'Konuyu aç',rep:'Şikâyet et',repd:'Bildirildi',del:'Sil',sure:'Emin misin?',needlogin:'Yazmak için giriş yapmalısın.',rules:'Saygılı ol, spam ve reklam yok.',repl:'yanıt',ago:['şimdi','dk','sa','gün'],wait:'Biraz bekle, çok hızlı yazıyorsun.',short:'Çok kısa.',nickbad:'Kullanıcı adı 3-20 karakter olmalı (harf, rakam, _ . -).',err:{'auth/email-already-in-use':'Bu e-posta zaten kayıtlı.','auth/invalid-email':'E-posta geçersiz.','auth/weak-password':'Şifre en az 6 karakter olmalı.','auth/invalid-credential':'E-posta ya da şifre yanlış.','auth/wrong-password':'E-posta ya da şifre yanlış.','auth/user-not-found':'E-posta ya da şifre yanlış.','auth/too-many-requests':'Çok fazla deneme. Biraz sonra tekrar dene.','auth/network-request-failed':'İnternet bağlantısı yok.','d':'Bir hata oldu. Tekrar dene.'}},
+en:{b:'Forum',t:'Discussion',soon:'The forum is opening very soon.',off:'The forum needs an internet connection.',c:['General','Builds & mutations','Map','Ideas & bugs'],login:'Log in',reg:'Sign up',out:'Log out',email:'Email',nick:'Username',pass:'Password',pass2:'Password (min 6 characters)',forgot:'Forgot password',sent:'A password reset link was sent to your email.',needmail:'Enter your email first.',nw:'New topic',empty:'No topics yet. Start the first one.',back:'‹ Back',reply:'Write a reply',send:'Send',tt:'Topic title',tb:'Your message',post:'Create topic',rep:'Report',repd:'Reported',del:'Delete',sure:'Sure?',needlogin:'Log in to post.',rules:'Be respectful. No spam or ads.',repl:'replies',ago:['now','m','h','d'],wait:'Slow down a little.',short:'Too short.',nickbad:'Username must be 3-20 characters (letters, digits, _ . -).',err:{'auth/email-already-in-use':'This email is already registered.','auth/invalid-email':'Invalid email.','auth/weak-password':'Password must be at least 6 characters.','auth/invalid-credential':'Wrong email or password.','auth/wrong-password':'Wrong email or password.','auth/user-not-found':'Wrong email or password.','auth/too-many-requests':'Too many attempts. Try again later.','auth/network-request-failed':'No internet connection.','d':'Something went wrong. Try again.'}},
+ru:{b:'Форум',t:'Обсуждение',soon:'Форум скоро откроется.',off:'Для форума нужен интернет.',c:['Общее','Билды и мутации','Карта','Идеи и баги'],login:'Войти',reg:'Регистрация',out:'Выйти',email:'Эл. почта',nick:'Имя пользователя',pass:'Пароль',pass2:'Пароль (от 6 символов)',forgot:'Забыли пароль',sent:'Ссылка для сброса пароля отправлена на почту.',needmail:'Сначала введите почту.',nw:'Новая тема',empty:'Тем пока нет. Создайте первую.',back:'‹ Назад',reply:'Написать ответ',send:'Отправить',tt:'Заголовок темы',tb:'Ваше сообщение',post:'Создать тему',rep:'Пожаловаться',repd:'Отправлено',del:'Удалить',sure:'Точно?',needlogin:'Чтобы писать, войдите.',rules:'Будьте вежливы. Без спама и рекламы.',repl:'ответов',ago:['сейчас','мин','ч','дн'],wait:'Не так быстро.',short:'Слишком коротко.',nickbad:'Имя: 3-20 символов (буквы, цифры, _ . -).',err:{'auth/email-already-in-use':'Эта почта уже зарегистрирована.','auth/invalid-email':'Неверная почта.','auth/weak-password':'Пароль от 6 символов.','auth/invalid-credential':'Неверная почта или пароль.','auth/wrong-password':'Неверная почта или пароль.','auth/user-not-found':'Неверная почта или пароль.','auth/too-many-requests':'Слишком много попыток. Позже.','auth/network-request-failed':'Нет интернета.','d':'Ошибка. Повторите.'}}};
+var CH=['genel','build','harita','oneri'],ch=0,view='list',topic=null,user=null,auth,db,ready=false,unsub=null,last=0,mode='login';
 function $(i){return document.getElementById(i)}
-function theme(){try{var c=getComputedStyle(document.body).backgroundColor.match(/\d+/g);if(c){var y=(+c[0]*299+ +c[1]*587+ +c[2]*114)/1000;return y>140?'light':'dark'}}catch(e){}return 'dark'}
-function labels(){var d=L[lang()];$('frbt').textContent=d.b;$('frt').textContent=d.t;$('frn').textContent=d.n;var c=$('frc');c.innerHTML='';d.c.forEach(function(n,i){var b=document.createElement('button');b.type='button';b.textContent=n;if(i===cur)b.className='on';b.onclick=function(){pick(i)};c.appendChild(b)})}
-function pick(i){cur=i;labels();var f=$('frm').querySelector('iframe.giscus-frame');if(f&&f.contentWindow)f.contentWindow.postMessage({giscus:{setConfig:{term:T[i]}}},'https://giscus.app')}
-function load(){if(loaded)return;var d=L[lang()],m=$('frm');if(!CFG.categoryId){m.innerHTML='<div class="fr-s"></div>';m.firstChild.textContent=d.soon;return}
-if(!navigator.onLine){m.innerHTML='<div class="fr-s"></div>';m.firstChild.textContent=d.off;return}
-loaded=true;m.innerHTML='';var s=document.createElement('script');s.src='https://giscus.app/client.js';var a={'data-repo':CFG.repo,'data-repo-id':CFG.repoId,'data-category':CFG.category,'data-category-id':CFG.categoryId,'data-mapping':'specific','data-term':T[cur],'data-strict':'0','data-reactions-enabled':'1','data-emit-metadata':'0','data-input-position':'top','data-theme':'dark','data-lang':d.lg,'data-loading':'lazy','crossorigin':'anonymous'};for(var k in a)s.setAttribute(k,a[k]);s.async=true;m.appendChild(s)}
-function open(){labels();$('fro').classList.add('on');load();try{document.documentElement.style.overflow='hidden'}catch(e){}}
-function close(){$('fro').classList.remove('on');try{document.documentElement.style.overflow=''}catch(e){}}
-$('frb').onclick=open;$('frx').onclick=close;$('fro').addEventListener('click',function(e){if(e.target===this)close()});addEventListener('keydown',function(e){if(e.key==='Escape'&&$('fro').classList.contains('on'))close()});labels();
+function lang(){var l='tr';try{l=localStorage.getItem('tontis-app-lang')||localStorage.getItem('tontis-site-lang')||document.documentElement.lang||'tr'}catch(e){}l=String(l).slice(0,2).toLowerCase();return L[l]?l:'tr'}
+function D(){return L[lang()]}
+function h(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function cfgOk(){return CFG.fb&&CFG.fb.apiKey&&CFG.fb.projectId}
+function ago(ts){try{var s=(Date.now()-(ts.toMillis?ts.toMillis():ts))/1000,a=D().ago;if(s<60)return a[0];if(s<3600)return Math.floor(s/60)+' '+a[1];if(s<86400)return Math.floor(s/3600)+' '+a[2];return Math.floor(s/86400)+' '+a[3]}catch(e){return ''}}
+function isAdmin(){return user&&user.email&&(CFG.admins||[]).indexOf(user.email.toLowerCase())>-1}
+function nm(){return (user&&(user.displayName||user.email.split('@')[0]))||''}
+function loadJs(u,cb){var s=document.createElement('script');s.src=u;s.onload=cb;s.onerror=function(){cb(1)};document.head.appendChild(s)}
+function boot(cb){if(ready)return cb();var m=$('frm');if(!cfgOk()){m.textContent='';m.appendChild(h('div','fr-s',D().soon));return}
+if(!navigator.onLine){m.textContent='';m.appendChild(h('div','fr-s',D().off));return}
+function init(){try{if(!firebase.apps.length)firebase.initializeApp(CFG.fb);auth=firebase.auth();db=firebase.firestore();ready=true;auth.onAuthStateChanged(function(u){user=u;head();if(view==='auth'&&u)go('list');else if(view==='topic'||view==='new')go(view,topic)});cb()}catch(e){m.textContent='';m.appendChild(h('div','fr-s',D().err.d))}}
+if(window.firebase&&firebase.firestore)return init();var B='https://www.gstatic.com/firebasejs/10.12.2/firebase-';loadJs(B+'app-compat.js',function(e1){if(e1)return fail();loadJs(B+'auth-compat.js',function(e2){if(e2)return fail();loadJs(B+'firestore-compat.js',function(e3){if(e3)return fail();init()})})});
+function fail(){m.textContent='';m.appendChild(h('div','fr-s',D().off))}}
+function head(){var d=D();$('frbt').textContent=d.b;$('frt').textContent=d.t;var u=$('fru');u.textContent=user?nm():d.login;u.onclick=function(){if(user){if(confirm(d.out+'?')){auth.signOut()}}else go('auth')};u.title=user?d.out:'';
+var c=$('frc');c.textContent='';d.c.forEach(function(n,i){var b=h('button',i===ch?'on':'',n);b.type='button';b.onclick=function(){ch=i;go('list')};c.appendChild(b)})}
+function stop(){if(unsub){unsub();unsub=null}}
+function go(v,t){stop();view=v;topic=t||null;var m=$('frm');m.textContent='';head();if(!ready)return;if(v==='list')vList(m);else if(v==='topic')vTopic(m);else if(v==='new')vNew(m);else vAuth(m)}
+function vList(m){var d=D();var r=h('div','fr-row');var nb=h('button','fr-btn',d.nw);nb.type='button';nb.onclick=function(){user?go('new'):go('auth')};r.appendChild(nb);r.appendChild(h('span','fr-s',d.rules));r.lastChild.style.cssText='padding:0;text-align:left;font-size:12.5px;flex:1';m.appendChild(r);var box=h('div');m.appendChild(box);
+unsub=db.collection('topics').where('ch','==',CH[ch]).limit(100).onSnapshot(function(q){var a=[];q.forEach(function(x){var o=x.data();o.id=x.id;a.push(o)});a.sort(function(x,y){return ((y.last&&y.last.toMillis?y.last.toMillis():0)-(x.last&&x.last.toMillis?x.last.toMillis():0))});box.textContent='';if(!a.length){box.appendChild(h('div','fr-s',d.empty));return}
+a.forEach(function(o){var b=h('button','fr-t');b.type='button';b.appendChild(h('b','',o.title));b.appendChild(h('span','',o.nick+' · '+(o.replies||0)+' '+d.repl+' · '+ago(o.last)));b.onclick=function(){go('topic',o)};box.appendChild(b)})},function(){box.textContent='';box.appendChild(h('div','fr-s',d.err.d))})}
+function postCard(o,tid,pid,op){var d=D(),c=h('div','fr-pst'+(op?' op':'')),w=h('div','w');w.appendChild(h('b','',o.nick));w.appendChild(h('span','',ago(o.ts)));c.appendChild(w);c.appendChild(h('p','',o.body));var a=h('div','a');
+var rb=h('button','',d.rep);rb.type='button';rb.onclick=function(){if(!user){go('auth');return}db.collection('reports').add({t:tid,p:pid||null,u:user.uid,ts:firebase.firestore.FieldValue.serverTimestamp()}).then(function(){rb.textContent=d.repd;rb.disabled=true})};a.appendChild(rb);
+if(user&&(o.uid===user.uid||isAdmin())){var db2=h('button','',d.del);db2.type='button';db2.onclick=function(){if(db2.dataset.s!=='1'){db2.dataset.s='1';db2.textContent=d.sure;return}
+if(pid){db.collection('topics').doc(tid).collection('posts').doc(pid).delete().then(function(){return db.collection('topics').doc(tid).update({replies:firebase.firestore.FieldValue.increment(-1)})}).catch(function(){})}else{db.collection('topics').doc(tid).delete().then(function(){go('list')}).catch(function(){})}};a.appendChild(db2)}c.appendChild(a);return c}
+function vTopic(m){var d=D(),t=topic;var bk=h('button','fr-btn g',d.back);bk.type='button';bk.onclick=function(){go('list')};var r=h('div','fr-row');r.appendChild(bk);m.appendChild(r);m.appendChild(h('h3','',t.title));m.lastChild.style.cssText='margin:0 0 10px;color:#f6e7bf;font-size:18px';m.appendChild(postCard(t,t.id,null,true));var box=h('div');m.appendChild(box);
+var form=h('div');form.style.marginTop='12px';m.appendChild(form);
+if(!user){var lb=h('button','fr-btn',d.needlogin);lb.type='button';lb.onclick=function(){go('auth')};form.appendChild(lb)}else{var ta=h('textarea','fr-i');ta.placeholder=d.reply;ta.maxLength=2000;var er=h('div','fr-e');var sb=h('button','fr-btn',d.send);sb.type='button';form.appendChild(ta);form.appendChild(er);form.appendChild(sb);
+sb.onclick=function(){var v=ta.value.trim();er.textContent='';if(v.length<2){er.textContent=d.short;return}if(Date.now()-last<10000){er.textContent=d.wait;return}sb.disabled=true;var ref=db.collection('topics').doc(t.id),FV=firebase.firestore.FieldValue;
+ref.collection('posts').add({body:v,uid:user.uid,nick:nm(),ts:FV.serverTimestamp()}).then(function(){return ref.update({last:FV.serverTimestamp(),replies:FV.increment(1)})}).then(function(){last=Date.now();ta.value='';sb.disabled=false}).catch(function(){er.textContent=d.err.d;sb.disabled=false})}}
+unsub=db.collection('topics').doc(t.id).collection('posts').orderBy('ts').limit(300).onSnapshot(function(q){box.textContent='';q.forEach(function(x){box.appendChild(postCard(x.data(),t.id,x.id,false))})})}
+function vNew(m){var d=D();var bk=h('button','fr-btn g',d.back);bk.type='button';bk.onclick=function(){go('list')};var r=h('div','fr-row');r.appendChild(bk);m.appendChild(r);var ti=h('input','fr-i');ti.placeholder=d.tt;ti.maxLength=120;var ta=h('textarea','fr-i');ta.placeholder=d.tb;ta.maxLength=2000;var er=h('div','fr-e');var sb=h('button','fr-btn',d.post);sb.type='button';[ti,ta,er,sb].forEach(function(e){m.appendChild(e)});
+sb.onclick=function(){var a=ti.value.trim(),b=ta.value.trim();er.textContent='';if(a.length<3||b.length<2){er.textContent=d.short;return}if(Date.now()-last<10000){er.textContent=d.wait;return}sb.disabled=true;var FV=firebase.firestore.FieldValue;
+db.collection('topics').add({ch:CH[ch],title:a,body:b,uid:user.uid,nick:nm(),ts:FV.serverTimestamp(),last:FV.serverTimestamp(),replies:0}).then(function(){last=Date.now();go('list')}).catch(function(){er.textContent=d.err.d;sb.disabled=false})}}
+function vAuth(m){var d=D();var bk=h('button','fr-btn g',d.back);bk.type='button';bk.onclick=function(){go('list')};var r=h('div','fr-row');r.appendChild(bk);m.appendChild(r);var tb=h('div','fr-tabs');var t1=h('button','fr-btn'+(mode==='login'?'':' g'),d.login),t2=h('button','fr-btn'+(mode==='reg'?'':' g'),d.reg);t1.type=t2.type='button';t1.onclick=function(){mode='login';go('auth')};t2.onclick=function(){mode='reg';go('auth')};tb.appendChild(t1);tb.appendChild(t2);m.appendChild(tb);
+var nk,em=h('input','fr-i'),pw=h('input','fr-i'),er=h('div','fr-e'),go2=h('button','fr-btn',mode==='reg'?d.reg:d.login);em.type='email';em.autocomplete='email';pw.type='password';pw.autocomplete=mode==='reg'?'new-password':'current-password';
+if(mode==='reg'){nk=h('input','fr-i');nk.maxLength=20;nk.autocomplete='username';var l0=h('label','fr-l',d.nick);m.appendChild(l0);m.appendChild(nk)}
+var l1=h('label','fr-l',d.email),l2=h('label','fr-l',mode==='reg'?d.pass2:d.pass);m.appendChild(l1);m.appendChild(em);m.appendChild(l2);m.appendChild(pw);m.appendChild(er);go2.type='button';m.appendChild(go2);
+if(mode==='login'){var fg=h('button','fr-btn g',d.forgot);fg.type='button';fg.style.marginLeft='8px';fg.onclick=function(){er.className='fr-e';if(!em.value.trim()){er.textContent=d.needmail;return}auth.sendPasswordResetEmail(em.value.trim()).then(function(){er.className='fr-ok';er.textContent=d.sent}).catch(function(e){er.textContent=d.err[e.code]||d.err.d})};m.appendChild(fg)}
+function fire(){er.className='fr-e';er.textContent='';var e=em.value.trim(),p=pw.value;go2.disabled=true;function bad(x){er.textContent=(d.err[x&&x.code])||d.err.d;go2.disabled=false}
+if(mode==='reg'){var n=nk.value.trim();if(!/^[\wçğıöşüÇĞİÖŞÜ.\-]{3,20}$/.test(n)){er.textContent=d.nickbad;go2.disabled=false;return}auth.createUserWithEmailAndPassword(e,p).then(function(c){return c.user.updateProfile({displayName:n}).then(function(){user=auth.currentUser;go('list')})}).catch(bad)}else auth.signInWithEmailAndPassword(e,p).catch(bad)}
+go2.onclick=fire;pw.addEventListener('keydown',function(ev){if(ev.key==='Enter')fire()})}
+function open(){$('fro').classList.add('on');head();try{document.documentElement.style.overflow='hidden'}catch(e){}boot(function(){go(view==='auth'&&!user?'auth':'list')})}
+function close(){$('fro').classList.remove('on');stop();try{document.documentElement.style.overflow=''}catch(e){}}
+$('frb').onclick=open;$('frx').onclick=close;$('fro').addEventListener('click',function(e){if(e.target===this)close()});addEventListener('keydown',function(e){if(e.key==='Escape'&&$('fro').classList.contains('on'))close()});$('frbt').textContent=D().b;
 function lift(){var h=0;try{var e=document.elementFromPoint(innerWidth/2,innerHeight-3);while(e&&e!==document.body){var cs=getComputedStyle(e);if((cs.position==='fixed'||cs.position==='sticky')&&!e.classList.contains('fr-b')&&!e.closest('.fr-o')){h=e.getBoundingClientRect().height;break}e=e.parentElement}}catch(x){}document.documentElement.style.setProperty('--fr-lift',(h>0&&h<140?h+10:0)+'px')}
 addEventListener('resize',lift);setInterval(lift,1500);setTimeout(lift,300);
 })();</script><!--/fr-->
