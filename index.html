@@ -2093,4 +2093,44 @@ function hero(){var cv=document.querySelector('.hp-cv:not(.ar)');if(!cv)return;v
 new MutationObserver(hero).observe(document.body,{childList:true,subtree:true});hero();
 try{if(S.tab==='dino'||S.tab==='home')render()}catch(e){}
 })();
-</script></body></html>
+</script>
+<!--fr--><style id="fr-css">
+.fr-b{text-transform:none;letter-spacing:0;position:fixed;left:max(14px,env(safe-area-inset-left,0px));bottom:max(14px,env(safe-area-inset-bottom,0px));z-index:9000;display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:99px;border:1px solid rgba(240,167,58,.5);background:rgba(15,27,22,.92);color:#f6e7bf;font:600 13px system-ui,'Segoe UI',sans-serif;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.35);backdrop-filter:blur(8px)}
+.fr-b:hover{border-color:#f0a73a}.fr-b svg{width:16px;height:16px;fill:none;stroke:#f0a73a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+body.introlock .fr-b{display:none}
+.fr-o{position:fixed;inset:0;z-index:99990;display:none;align-items:center;justify-content:center;background:rgba(2,6,10,.72);backdrop-filter:blur(4px);padding:max(12px,env(safe-area-inset-top,0px)) 12px max(12px,env(safe-area-inset-bottom,0px))}
+.fr-o.on{display:flex}
+.fr-p{width:min(780px,100%);height:min(88vh,860px);display:flex;flex-direction:column;background:#0f1b16;color:#e8efe9;border:1px solid #1f3029;border-radius:16px;overflow:hidden;font:14px/1.5 system-ui,'Segoe UI',sans-serif;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.fr-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px 8px}
+.fr-h b{font:800 18px system-ui;letter-spacing:.02em;color:#f6e7bf}
+.fr-x{background:none;border:1px solid #2a4034;color:#cdd8d2;border-radius:99px;width:34px;height:34px;font-size:18px;cursor:pointer;line-height:1}
+.fr-c{display:flex;gap:8px;flex-wrap:wrap;padding:4px 16px 10px}
+.fr-c button{text-transform:none;letter-spacing:0;background:#14251e;color:#cdd8d2;border:1px solid #24392f;border-radius:99px;padding:7px 14px;font:600 13px system-ui;cursor:pointer}
+.fr-c button.on{background:#f0a73a;color:#1a1305;border-color:#f0a73a}
+.fr-n{padding:0 16px 10px;color:#93a89c;font-size:12.5px}
+.fr-m{flex:1;min-height:0;overflow:auto;padding:0 12px 12px;-webkit-overflow-scrolling:touch}
+.fr-m iframe{width:100%!important}
+.fr-s{padding:30px 18px;text-align:center;color:#93a89c}
+@media (max-width:560px){.fr-p{height:100%;border-radius:0;width:100%}.fr-o{padding:0}}
+</style>
+<button type="button" class="fr-b" id="frb" aria-label="Forum"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.4A8 8 0 1 1 21 12z"/></svg><span id="frbt">Forum</span></button>
+<div class="fr-o" id="fro" role="dialog" aria-modal="true"><div class="fr-p"><div class="fr-h"><b id="frt">Forum</b><button type="button" class="fr-x" id="frx" aria-label="X">×</button></div><div class="fr-c" id="frc"></div><div class="fr-n" id="frn"></div><div class="fr-m" id="frm"></div></div></div>
+<script id="fr-js">(function(){
+var CFG={repo:'CLAF16/tonti-evrima-',repoId:'R_kgDOVzl2_Q',category:'Forum',categoryId:''};
+var L={tr:{t:'Tartışma',b:'Forum',n:'Saygılı ol, spam ve reklam yok. Yazmak için GitHub hesabıyla giriş yaparsın.',soon:'Forum çok yakında açılıyor.',off:'Forum için internet bağlantısı gerekir.',c:['Genel','Build ve mutasyon','Harita','Öneri ve hata'],lg:'tr'},
+en:{t:'Discussion',b:'Forum',n:'Be respectful, no spam or ads. You sign in with a GitHub account to post.',soon:'The forum is opening very soon.',off:'The forum needs an internet connection.',c:['General','Builds & mutations','Map','Ideas & bugs'],lg:'en'},
+ru:{t:'Обсуждение',b:'Форум',n:'Будьте вежливы, без спама и рекламы. Чтобы писать, войдите через аккаунт GitHub.',soon:'Форум скоро откроется.',off:'Для форума нужен интернет.',c:['Общее','Билды и мутации','Карта','Идеи и баги'],lg:'ru'}};
+var T=['forum-genel','forum-build','forum-harita','forum-oneri'],cur=0,loaded=false;
+function lang(){var l='tr';try{l=localStorage.getItem('tontis-app-lang')||localStorage.getItem('tontis-site-lang')||document.documentElement.lang||'tr'}catch(e){}l=String(l).slice(0,2).toLowerCase();return L[l]?l:'tr'}
+function $(i){return document.getElementById(i)}
+function theme(){try{var c=getComputedStyle(document.body).backgroundColor.match(/\d+/g);if(c){var y=(+c[0]*299+ +c[1]*587+ +c[2]*114)/1000;return y>140?'light':'dark'}}catch(e){}return 'dark'}
+function labels(){var d=L[lang()];$('frbt').textContent=d.b;$('frt').textContent=d.t;$('frn').textContent=d.n;var c=$('frc');c.innerHTML='';d.c.forEach(function(n,i){var b=document.createElement('button');b.type='button';b.textContent=n;if(i===cur)b.className='on';b.onclick=function(){pick(i)};c.appendChild(b)})}
+function pick(i){cur=i;labels();var f=$('frm').querySelector('iframe.giscus-frame');if(f&&f.contentWindow)f.contentWindow.postMessage({giscus:{setConfig:{term:T[i]}}},'https://giscus.app')}
+function load(){if(loaded)return;var d=L[lang()],m=$('frm');if(!CFG.categoryId){m.innerHTML='<div class="fr-s"></div>';m.firstChild.textContent=d.soon;return}
+if(!navigator.onLine){m.innerHTML='<div class="fr-s"></div>';m.firstChild.textContent=d.off;return}
+loaded=true;m.innerHTML='';var s=document.createElement('script');s.src='https://giscus.app/client.js';var a={'data-repo':CFG.repo,'data-repo-id':CFG.repoId,'data-category':CFG.category,'data-category-id':CFG.categoryId,'data-mapping':'specific','data-term':T[cur],'data-strict':'0','data-reactions-enabled':'1','data-emit-metadata':'0','data-input-position':'top','data-theme':'dark','data-lang':d.lg,'data-loading':'lazy','crossorigin':'anonymous'};for(var k in a)s.setAttribute(k,a[k]);s.async=true;m.appendChild(s)}
+function open(){labels();$('fro').classList.add('on');load();try{document.documentElement.style.overflow='hidden'}catch(e){}}
+function close(){$('fro').classList.remove('on');try{document.documentElement.style.overflow=''}catch(e){}}
+$('frb').onclick=open;$('frx').onclick=close;$('fro').addEventListener('click',function(e){if(e.target===this)close()});addEventListener('keydown',function(e){if(e.key==='Escape'&&$('fro').classList.contains('on'))close()});labels();
+})();</script><!--/fr-->
+</body></html>
